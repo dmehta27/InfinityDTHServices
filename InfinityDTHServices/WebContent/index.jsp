@@ -18,20 +18,22 @@
     </div>
         
 		<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
+			<input type="hidden" name="operator" value="login">
                 <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="mail" placeholder="abc@domain.com" required>
+                  <label for="email"> UserName </label>
+                  <input type="email" class="form-control" name="username" id="mail" placeholder="abc@domain.com" required>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="pass" placeholder="********" required> 
+                  <input type="password" class="form-control" name="password" id="pass" placeholder="********" required> 
                 </div>
                
-                <button type="submit" id="sbut" class="btn btn-outline-dark">Submit</button>
-                
+                <button type="submit" id="sbut" class="btn btn-outline-dark">Submit</button>              
         </form>
-
-        <button type="submit" id="rbut" class="btn btn-primary">New User</button>
+        <br>
+        <br>
+        
+        <a id="rcust" href = "Register-Customer.jsp" > New Customer? </a>
        
         
 </div>
