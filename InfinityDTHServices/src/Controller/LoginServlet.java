@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 import Model.ConnectionUtility;
 import Model.LoginLogic;
 
@@ -26,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public LoginServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -35,8 +33,9 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		System.out.print("IN post");
+// TODO Auto-generated method stub
+// System.out.print("IN post");
+		HttpSession session = request.getSession();
 		ConnectionUtility connectionUtility = new ConnectionUtility();
 		String option = request.getParameter("operator");
 		String role;
@@ -45,31 +44,42 @@ public class LoginServlet extends HttpServlet {
 		case "login":
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-
+			session.setAttribute("username", username);
+			session.setAttribute("password", password);
 			LoginLogic loginLogic = new LoginLogic();
 			role = loginLogic.getRole(username, password, connectionUtility);
+			session.setAttribute("role", role);
 			if (role != null) {
 				value = loginLogic.validateLogin(username, password, role, connectionUtility);
 				if (value == 1) {
-					switch (role) {
-					case "ADMIN":
-						response.sendRedirect("admin.jsp");
-						break;
-					case "OPERATOR":
-						response.sendRedirect("operator.jsp");
-						break;
-					case "CUSTOMER":
-						response.sendRedirect("customer.jsp");
-						break;
+					if (loginLogic.checkFirstLogin(username, connectionUtility, role)) {
+						response.sendRedirect("changePassword.jsp");
 					}
-
-				} else {
-					response.sendRedirect("index.jsp");
+					else {
+						switch (role) {
+						case "ADMIN":
+							response.sendRedirect("admin.jsp");
+							break;
+						case "OPERATOR":
+							response.sendRedirect("operatorsuccess.jsp");
+							break;
+						case "CUSTOMER":
+							response.sendRedirect("customersuccess.jsp");
+							break;
+						}
+					}
 				}
 			} else {
 				response.sendRedirect("index.jsp");
 			}
 
+			break;
+		case "passowrdManagement":
+			String newPassword = request.getParameter("newpass");
+			loginLogic = new LoginLogic();
+			if(loginLogic.updatePassword(newPassword, (String)session.getAttribute("username"), (String)session.getAttribute("role"), connectionUtility)) {
+				
+			}
 			break;
 		}
 

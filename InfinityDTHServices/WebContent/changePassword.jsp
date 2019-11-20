@@ -8,29 +8,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>Log in</title>
+    <title>Change Password</title>
 </head>
 <body>
 <div class="container">
-    <h1>Log in</h1>
+    <h1>Change Password</h1>
     <div class="row"> 
      <img src="2.jpg" class="bird" alt="Bird image">
     </div>
         <form action="<%=request.getContextPath()%>/LoginServlet" method="post">
-        <input type="hidden" name="operator" value ="login" />
+        <input type="hidden" name="operator" value ="passowrdManagement" />
                 <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="mail" placeholder="abc@domain.com" required>
+                  <label for="password">New Password</label>
+                  <input type="password" class="form-control" name="newpass" id="pass" placeholder="********" required> 
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="pass" placeholder="********" required> 
-                </div>
+                    <label for="password">Confirm New Password</label>
+                    <input type="password" class="form-control" id="pass" placeholder="********" required> 
+                  </div>
                
-                <button type="submit" id="sbut" class="btn btn-outline-dark">User Login</button>
+                <button type="submit" id="registbut" class="btn btn-outline-dark">Update</button>
                 
         </form>
-        <a  id= "ncustomer" href="customerRegister.jsp">New Customer ?</a>
        
         
 </div>

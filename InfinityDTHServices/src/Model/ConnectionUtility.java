@@ -6,14 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import java.sql.*;
 
 public class ConnectionUtility {
 	private Connection connection;
-	private DatabaseMetaData databaseMetaData;
 	private Statement statement;
 	private ResultSet resultSet;
-	private ResultSetMetaData resultSetMetaData;
 	private String jdbcDriver;
 	private String url;
 	private String query;
@@ -44,7 +41,6 @@ public class ConnectionUtility {
 
 			statement = connection.createStatement();
 
-			databaseMetaData = connection.getMetaData();
 
 		} catch (ClassNotFoundException ce) {
 			System.out.println("Class not Found: " + ce);
