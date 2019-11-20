@@ -11,6 +11,7 @@ public class ConnectionUtility {
 	private Connection connection;
 	private Statement statement;
 	private ResultSet resultSet;
+	private int value;
 	private String jdbcDriver;
 	private String url;
 	private String query;
@@ -24,7 +25,7 @@ public class ConnectionUtility {
 
 		boolean status = true;
 		jdbcDriver = "oracle.jdbc.OracleDriver";
-		url = "jdbc:oracle:thin:@localhost:1521:XE";
+		url = "jdbc:oracle:thin:@localhost:1521:xe";
 		username = "system";
 		password = "tcs12345";
 		try {
@@ -35,7 +36,7 @@ public class ConnectionUtility {
 				System.out.print("Connection was not established");
 
 			} else {
-//System.out.println("Connection is established");
+//				System.out.println("Connection is established");
 
 			}
 
@@ -85,6 +86,16 @@ public class ConnectionUtility {
 // TODO Auto-generated catch block
 		}
 		return resultSet;
+	}
+	
+	public int UpdateQuery() {
+		try {
+			value = statement.executeUpdate(query);
+
+		} catch (SQLException e) {
+// TODO Auto-generated catch block
+		}
+		return value;
 	}
 
 

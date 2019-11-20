@@ -20,11 +20,11 @@
         <input type="hidden" name="operator" value ="login" />
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="mail" placeholder="abc@domain.com" required>
+                  <input type="email" name="username" class="form-control" id="mail"  placeholder="abc@domain.com" required>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="pass" placeholder="********" required> 
+                  <input type="password" name="password" class="form-control" id="pass"  placeholder="********" required> 
                 </div>
                
                 <button type="submit" id="sbut" class="btn btn-outline-dark">User Login</button>
