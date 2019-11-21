@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 						response.sendRedirect("changePassword.jsp");
 					}
 					else {
+						System.out.println("dsadsadsadsa" +role);
 						switch (role) {
 						case "ADMIN":
 							response.sendRedirect("admin.jsp");
@@ -66,11 +67,14 @@ public class LoginServlet extends HttpServlet {
 						case "OPERATOR":
 							response.sendRedirect("operatorsuccess.jsp");
 							break;
-						case "CUSTOMER":
+						case "Customer":
 							response.sendRedirect("customersuccess.jsp");
 							break;
 						}
 					}
+				}
+				else {
+					response.sendRedirect("index.jsp");
 				}
 			} else {
 				response.sendRedirect("index.jsp");
@@ -81,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 			String newPassword = request.getParameter("newpass");
 			loginLogic = new LoginLogic();
 			if(loginLogic.updatePassword(newPassword, (String)session.getAttribute("username"), (String)session.getAttribute("role"), connectionUtility)) {
-//				System.out.println("update validated"+ (String)session.getAttribute("role"));
+//				
 				switch ((String)session.getAttribute("role")) {
 				case "ADMIN":
 					response.sendRedirect("admin.jsp");
@@ -93,6 +97,9 @@ public class LoginServlet extends HttpServlet {
 					response.sendRedirect("customersuccess.jsp");
 					break;
 				}
+			}
+			else {
+				response.sendRedirect("customersuccess.jsp");
 			}
 			break;
 		}

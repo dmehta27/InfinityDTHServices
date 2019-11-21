@@ -11,7 +11,7 @@ public class LoginLogic {
 		if (!username.isEmpty() && !password.isEmpty()) {
 			if (connectionUtility.connectDB()) {
 				try {
-					queryString = "SELECT ROLE from ROLE where UNAME  = '" + username + "' and PASSWORD = '" + password + "'";
+					queryString = "SELECT ROLE from ROLE where UNAME  = '" + username + "'";;
 //					System.out.println(queryString);
 					connectionUtility.setQuery(queryString);
 					ResultSet resultSet = connectionUtility.RunQuery();
@@ -36,7 +36,7 @@ public class LoginLogic {
 				try {
 					queryString = "SELECT count(*) from " + tableName + " where EMAIL  = '" + username
 							+ "' and PASSWORD = '" + password + "'";
-//					System.out.println(queryString);
+					System.out.println(queryString);
 					connectionUtility.setQuery(queryString);
 					ResultSet resultSet = connectionUtility.RunQuery();
 					while (resultSet.next()) {
@@ -89,6 +89,10 @@ public class LoginLogic {
 		if (connectionUtility.connectDB()) {
 			String queryString = null;
 			try {
+				queryString = "Update ROLE set Password = '" + newPassword + "' where UNAME  = '"+username+ "'";
+//				System.out.println(queryString);
+				connectionUtility.setQuery(queryString);
+				status = connectionUtility.UpdateQuery();
 				queryString = "Update " + tableName + " set Password = '" + newPassword + "' where EMAIL  = '"+username+ "'";
 //				System.out.println(queryString);
 				connectionUtility.setQuery(queryString);
@@ -97,6 +101,10 @@ public class LoginLogic {
 				System.out.println(status);
 				if(status!= 0) {
 					flag = true;
+					queryString = "Update " + tableName + " set flag = 1 where EMAIL = '" + username + "'";
+					
+					connectionUtility.setQuery(queryString);
+					status = connectionUtility.UpdateQuery();
 				}
 				
 			} catch (Exception e) {
@@ -115,10 +123,9 @@ public class LoginLogic {
 		case "Customer":
 			tableName = "CUSTOMER";
 			break;
-		case "OPERATOR":
+		case "Operator":
 			tableName = "OPERATOR";
 			break;
-
 		}
 		return tableName;
 	}
