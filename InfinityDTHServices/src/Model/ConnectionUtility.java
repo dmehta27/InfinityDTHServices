@@ -36,7 +36,7 @@ public class ConnectionUtility {
 				System.out.print("Connection was not established");
 
 			} else {
-//				System.out.println("Connection is established");
+				System.out.println("Connection is established");
 
 			}
 
