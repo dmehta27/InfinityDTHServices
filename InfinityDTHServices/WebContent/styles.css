@@ -1,8 +1,7 @@
-@charset "ISO-8859-1";
 body{
     text-align: center;
     position: relative;
-    top: 100px;
+    top: 75px;
     background-image: url("1.jpg");
 }
 
@@ -41,13 +40,51 @@ h1{
 #sbut{
     position: relative;
     top: 20px;
-    left: 12px;
-    width: 200px;
+    width: 150px;
 }
+
+
+#abut{
+    position: relative;
+    left: 200px;
+    width: 150px;
+    bottom: 18px;
+}
+
+
 
 #rbut{
     position: relative;
-    top: 40px;
-    left: 12px;
+    top: 50px;
+    right: 50px;
     width: 200px;
 }
+
+#registbut{
+    position: relative;
+    top: 20px;
+    left: 12px;
+    bottom: 50px;
+    width: 200px;
+
+}
+
+#dropdown1{
+    position: relative;
+    right: 60px;
+    top: 10px;
+
+}
+#dropdown2{
+    position: relative;
+   left: 95px;
+   bottom: 27px;
+
+}
+
+#ncustomer{
+    color: black;
+    position: relative;
+    top: 40px;
+}
+
