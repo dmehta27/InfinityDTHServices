@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,63 +43,69 @@ public class LoginServlet extends HttpServlet {
 		int value;
 		switch (option) {
 		case "login":
-			String username = request.getParameter("username");
+			String username = request.getParameter("username").toLowerCase().trim();
 			String password = request.getParameter("password");
-			
-			session.setAttribute("username", username);
-			session.setAttribute("password", password);
-			LoginLogic loginLogic = new LoginLogic();
-			role = loginLogic.getRole(username, password, connectionUtility);
-//			System.out.println(role);
-			session.setAttribute("role", role);
-			if (role != null) {
-				value = loginLogic.validateLogin(username, password, role, connectionUtility);
-				if (value == 1) {
-//					System.out.println("validated Login");
-					if (loginLogic.checkFirstLogin(username, connectionUtility, role)) {
-						response.sendRedirect("changePassword.jsp");
-					}
-					else {
-						System.out.println("dsadsadsadsa" +role);
-						switch (role) {
-						case "ADMIN":
-							response.sendRedirect("admin.jsp");
-							break;
-						case "OPERATOR":
-							response.sendRedirect("operatorsuccess.jsp");
-							break;
-						case "Customer":
-							response.sendRedirect("customersuccess.jsp");
-							break;
-						}
-					}
-				}
-				else {
-					response.sendRedirect("index.jsp");
-				}
+			if (username.equalsIgnoreCase("admin@dth.com") && password.equalsIgnoreCase("admin")) {
+				response.sendRedirect("adminLogin.jsp");
 			} else {
-				response.sendRedirect("index.jsp");
+				session.setAttribute("username", username);
+				session.setAttribute("password", password);
+				LoginLogic loginLogic = new LoginLogic();
+				role = loginLogic.getRole(username, password, connectionUtility);
+				System.out.println(role);
+				session.setAttribute("role", role);
+				if (role != null) {
+					value = loginLogic.validateLogin(username, password, role, connectionUtility);
+					if (value == 1) {
+						System.out.println("validated Login");
+						if (loginLogic.checkFirstLogin(username, connectionUtility, role)) {
+							response.sendRedirect("changePassword.jsp");
+						} else {
+							switch (role) {
+							case "ADMIN":
+								response.sendRedirect("admin.jsp");
+								break;
+							case "Operator":
+								response.sendRedirect("operatorsuccess.jsp");
+								break;
+							case "Customer":
+								response.sendRedirect("customersuccess.jsp");
+								break;
+							}
+						}
+					} else {
+						session.invalidate();
+						request.setAttribute("errorMessage", "Invalid user or password");
+						RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+						rd.forward(request, response);
+					}
+				} else {
+					session.invalidate();
+					request.setAttribute("errorMessage", "Invalid user or password");
+					RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+					rd.forward(request, response);
+				}
 			}
 
 			break;
 		case "passowrdManagement":
-			String newPassword = request.getParameter("newpass");
-			loginLogic = new LoginLogic();
-			if(loginLogic.updatePassword(newPassword, (String)session.getAttribute("username"), (String)session.getAttribute("role"), connectionUtility)) {
+			String newPassword = request.getParameter("pwd1");
+			LoginLogic loginLogic = new LoginLogic();
+			if (loginLogic.updatePassword(newPassword, (String) session.getAttribute("username"),
+					(String) session.getAttribute("role"), connectionUtility)) {
 //				
-				switch ((String)session.getAttribute("role")) {
+				switch ((String) session.getAttribute("role")) {
 				case "ADMIN":
 					response.sendRedirect("admin.jsp");
 					break;
-				case "OPERATOR":
+				case "Operator":
 					response.sendRedirect("operatorsuccess.jsp");
 					break;
 				case "Customer":
 					response.sendRedirect("customersuccess.jsp");
 					break;
 				}
-			}
-			else {
+			} else {
 				response.sendRedirect("customersuccess.jsp");
 			}
 			break;

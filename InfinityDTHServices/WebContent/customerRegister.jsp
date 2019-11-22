@@ -13,6 +13,9 @@
 <body>
 <div class="container">
     <h1>Sign Up</h1>
+      <label for="dpass" id="lpass"><h5>Default Password</h5></label>
+      <h5 class="text-warning" id="dpass">Change@pwd</h5>
+      
     <div class="row"> 
      <img src="2.jpg" class="bird" alt="Bird image">
     </div>
@@ -54,7 +57,7 @@
                     <label for="oname">Retailer Name</label>
                     <input type="text" class="form-control" id="mail" placeholder="Only for Admin/Operator Purpose"> 
                   </div>
-                <button type="submit" id="registbut" class="btn btn-outline-dark">Register</button>
+                <button type="submit" id="registbut" class="btn btn-outline-light">Register</button>
                 
         </form>
 

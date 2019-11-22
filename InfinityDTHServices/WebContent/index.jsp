@@ -17,6 +17,12 @@
      <img src="2.jpg" class="bird" alt="Bird image">
     </div>
         <form action="<%=request.getContextPath()%>/LoginServlet" method="post">
+        <%
+    if(null!=request.getAttribute("errorMessage"))
+    {
+        out.println(request.getAttribute("errorMessage"));
+    }
+%>
         <input type="hidden" name="operator" value ="login" />
                 <div class="form-group">
                   <label for="email">Email address</label>

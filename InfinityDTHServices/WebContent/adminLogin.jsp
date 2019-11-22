@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>Operator</title>
+    <title>Admin</title>
 </head>
 <body>
         <div class="container">
         <div class="row">
-                <h1>Welcome Operator !!</h1>
+                <h1>Welcome Admin !!</h1>
                 <a href="logout.jsp" class="btn btn-outline-danger" role="button" id="logbut">Log out</a>
               </div>
         <div class="row"> 
@@ -26,13 +26,13 @@
             <img src="9.jpg" id="cimage" alt="Customer Image">
           </div>
           <div class="col-sm-4">
-            <h3>Retailer Registration</h3>
-            <a href="retailorRegister.jsp" class="btn btn-outline-warning" role="button" id="acbut">Register</a>
+            <h3>Operator Registration</h3>
+            <a href="operatorRegister.jsp" class="btn btn-outline-warning" role="button" id="acbut">Register</a>
             <img src="9.jpg" id="cimage" alt="Customer Image">
           </div>
           <div class="col-sm-4">
-            <h3>Charts</h3>
-            <a href="#" class="btn btn-outline-warning" role="button" id="acbut">Register</a>
+            <h3>Retailer Registration</h3>
+            <a href="retailorRegister.jsp" class="btn btn-outline-warning" role="button" id="acbut">Register</a>
             <img src="9.jpg" id="cimage" alt="Customer Image">
           </div>
         </div>

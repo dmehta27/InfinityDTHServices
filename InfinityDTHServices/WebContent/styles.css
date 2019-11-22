@@ -2,7 +2,8 @@ body{
     text-align: center;
     position: relative;
     top: 75px;
-    background-image: url("1.jpg");
+    background-image: url("8.jpg");
+    color: white;
 }
 
 .bird{
@@ -14,6 +15,18 @@ body{
     height: 100px;
 
 }
+
+
+.bird2{
+    border-radius: 50%; 
+    width: 100px;
+    position: relative;
+    left: 520px;
+    bottom: 40px;
+    height: 100px;
+
+}
+
 
 
 
@@ -71,20 +84,64 @@ h1{
 
 #dropdown1{
     position: relative;
-    right: 60px;
     top: 10px;
-
-}
-#dropdown2{
-    position: relative;
-   left: 95px;
-   bottom: 27px;
+    width: 200px;
+    left:460px;
 
 }
 
 #ncustomer{
-    color: black;
+    color: white;
     position: relative;
     top: 40px;
 }
+
+#acbut{
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 20px;
+}
+
+#regisbut{
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 60px;
+}
+
+#logbut{
+    width: 200px;
+    height: 40px;
+    position: relative;
+    bottom: 35px;
+    left: 750px;
+}
+
+#cimage{ 
+    width: 200px;
+    position: relative;
+    height: 100px;
+    top: 20px;
+}
+
+#dpass{
+    position: relative;
+    left: 600px;
+    bottom: 95px;
+
+}
+
+#lpass{
+    position: relative;
+    left: 600px;
+    bottom: 85px;
+}
+
+#retreg{
+    position: relative;
+    left: 210px;
+}
+
+
 

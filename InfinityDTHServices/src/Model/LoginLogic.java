@@ -12,7 +12,7 @@ public class LoginLogic {
 			if (connectionUtility.connectDB()) {
 				try {
 					queryString = "SELECT ROLE from ROLE where UNAME  = '" + username + "'";;
-//					System.out.println(queryString);
+					System.out.println(queryString);
 					connectionUtility.setQuery(queryString);
 					ResultSet resultSet = connectionUtility.RunQuery();
 					while (resultSet.next()) {
